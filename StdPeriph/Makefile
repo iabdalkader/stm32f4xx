@@ -1,5 +1,5 @@
 # Includes
-override CFLAGS = $(_CFLAGS) -Iinc -I../CMSIS
+override CFLAGS = $(_CFLAGS) -Iinc -I../CMSIS/inc
 
 # Sources
 SRCS = $(wildcard src/*.c) 

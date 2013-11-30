@@ -1,5 +1,5 @@
 # Includes
-override CFLAGS = $(_CFLAGS) -Iinc -I../CMSIS -I$(TOP_DIR)/StdPeriph/inc -I$(TOP_DIR)/USB_OTG/inc -DUSE_USB_OTG_FS
+override CFLAGS = $(_CFLAGS) -Iinc -I../CMSIS/inc -I$(TOP_DIR)/StdPeriph/inc -I$(TOP_DIR)/USB_OTG/inc -DUSE_USB_OTG_FS
 
 # Sources
 SRCS = $(wildcard src/*.c) 

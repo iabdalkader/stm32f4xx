@@ -1,5 +1,5 @@
 # Includes
- override CFLAGS = $(_CFLAGS) -Iinc -I../CMSIS -I$(TOP_DIR)/StdPeriph/inc -DUSE_USB_OTG_FS
+ override CFLAGS = $(_CFLAGS) -Iinc -I../CMSIS/inc -I$(TOP_DIR)/StdPeriph/inc -DUSE_USB_OTG_FS
 
 # Sources
 SRCS = src/usb_core.c src/usb_bsp.c  src/usb_dcd.c src/usb_dcd_int.c  

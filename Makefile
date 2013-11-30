@@ -55,6 +55,7 @@ export TOP_DIR
 ###################################################
 
 all:
+	$(MAKE) -C CMSIS
 	$(MAKE) -C StdPeriph
 	$(MAKE) -C USB_OTG
 	$(MAKE) -C USB_Device
@@ -63,6 +64,7 @@ all:
 #	$(MAKE) -C fat_fs 
 
 clean:
+	$(MAKE) clean -C CMSIS
 	$(MAKE) clean -C StdPeriph
 	$(MAKE) clean -C USB_OTG
 	$(MAKE) clean -C USB_Device

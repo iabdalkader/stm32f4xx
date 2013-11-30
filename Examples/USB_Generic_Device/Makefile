@@ -1,4 +1,4 @@
-override CFLAGS = $(_CFLAGS) -Iinc -I$(TOP_DIR)/StdPeriph/inc -I$(TOP_DIR)/CMSIS \
+override CFLAGS = $(_CFLAGS) -Iinc -I$(TOP_DIR)/StdPeriph/inc -I$(TOP_DIR)/CMSIS/inc \
                   -I$(TOP_DIR)/USB_Device/inc -I$(TOP_DIR)/USB_OTG/inc -I$(TOP_DIR)/USB_Generic/inc -DUSE_USB_OTG_FS 
 
 #Linker Flags
