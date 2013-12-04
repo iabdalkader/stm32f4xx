@@ -47,8 +47,8 @@ static __ALIGN_BEGIN uint8_t usbd_gen_CfgDesc[USB_CONFIG_DESC_SIZE]  __ALIGN_END
     0x01,   /* bNumInterfaces: 2 interface */
     0x01,   /* bConfigurationValue: Configuration value */
     0x00,   /* iConfiguration: Index of string descriptor describing the configuration */
-    0xC0,   /* bmAttributes: self powered */
-    0x32,   /* MaxPower 0 mA */
+    0x80,   /* bmAttributes: self powered */
+    0xFA,   /* MaxPower 500 mA */
 
     /*Interface Descriptor */
     0x09,   /* bLength: Interface Descriptor size */
