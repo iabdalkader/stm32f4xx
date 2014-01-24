@@ -3,7 +3,7 @@ override CFLAGS = $(_CFLAGS) -Iinc -I$(TOP_DIR)/StdPeriph/inc -I$(TOP_DIR)/CMSIS
 
 #Linker Flags
 LDFLAGS = -mcpu=cortex-m4 -mthumb -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -mfloat-abi=hard -mfpu=fpv4-sp-d16
-LDFLAGS += -Wl,-Map=$(BIN).map -T$(TOP_DIR)/stm32_flash.ld \
+LDFLAGS += -Wl,-Map=$(BIN).map -T$(TOP_DIR)/stm32f4xx.ld \
            -L$(TOP_DIR)/StdPeriph -L$(TOP_DIR)/USB_Device -L$(TOP_DIR)/USB_OTG -L$(TOP_DIR)/USB_Generic 
 
 # Sources

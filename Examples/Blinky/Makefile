@@ -2,7 +2,7 @@ override CFLAGS = $(_CFLAGS) -Iinc -I$(TOP_DIR)/StdPeriph/inc -I$(TOP_DIR)/CMSIS
 
 #Linker Flags
 LDFLAGS = -mcpu=cortex-m4 -mthumb -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -mfloat-abi=hard -mfpu=fpv4-sp-d16
-LDFLAGS += -Wl,-Map=$(BIN).map -T$(TOP_DIR)/stm32_flash.ld -L. -L$(TOP_DIR)/StdPeriph
+LDFLAGS += -Wl,-Map=$(BIN).map -T$(TOP_DIR)/stm32f4xx.ld -L. -L$(TOP_DIR)/StdPeriph
 
 # Sources
 BIN  = "blinky"
