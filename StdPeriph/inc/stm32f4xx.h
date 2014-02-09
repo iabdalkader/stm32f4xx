@@ -118,6 +118,9 @@
         can define the HSE value in your toolchain compiler preprocessor.
   */           
 #if !defined  (HSE_VALUE) 
+#if !defined  (OSC) 
+  #error "OSC value not defined!"
+#endif
   #define HSE_VALUE    ((uint32_t)OSC*1000000) /*!< Value of the External oscillator in Hz */
 #endif /* HSE_VALUE */
 
