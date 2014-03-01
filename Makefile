@@ -10,9 +10,9 @@ TOP_DIR=$(shell pwd)
 
 _CFLAGS = $(CFLAGS)
 
-ifndef $(OSC)
-    $(warning "OSC value was not defined using default 16MHz, pass CFLAGS='-DOSC=xxMhz' to override")
-    _CFLAGS += -DOSC=16
+ifndef OSC
+    $(warning "OSC value is not defined using default 12MHz, use make OSC=xx in Mhz to override")
+    OSC=12
 endif
 
 ifneq ($(FLOAT_TYPE), hard)
@@ -22,23 +22,22 @@ ifneq ($(FLOAT_TYPE), hard)
 endif
 
 ifeq ($(DEBUG), 1)
-_CFLAGS += -O0 -ggdb
-else ifeq ($(DEBUG), 0)
-_CFLAGS += -O2
-else 
-_CFLAGS += -O0 -ggdb
-endif
-
-_CFLAGS += -Wall -mlittle-endian -mthumb -mthumb-interwork -nostartfiles -mcpu=cortex-m4 -nostdlib
-
-ifeq ($(FLOAT_TYPE), hard)
-_CFLAGS += -fsingle-precision-constant -Wdouble-promotion
-_CFLAGS += -mfpu=fpv4-sp-d16 -mfloat-abi=hard
+    OPT_FLAGS = -g -O0
 else
-_CFLAGS += -msoft-float
+    OPT_FLAGS = -O2
 endif
 
-_CFLAGS += -DSTM32F40_41xxx
+#ifeq ($(FLOAT_TYPE), hard)
+#_CFLAGS += -fsingle-precision-constant -Wdouble-promotion
+#_CFLAGS += -mfpu=fpv4-sp-d16 -mfloat-abi=hard -D__VFP_FP__
+#else
+#_CFLAGS += -msoft-float -D__SOFTFP__
+#endif
+
+_CFLAGS += -Wall $(OPT_FLAGS) -mlittle-endian -mthumb -nostartfiles -mcpu=cortex-m4 -mabi=aapcs-linux -fshort-enums
+_CFLAGS += -fsingle-precision-constant -Wdouble-promotion -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_TYPE) -std=gnu99
+_CFLAGS += -DOSC=$(OSC) -DSTM32F40_41xxx
+          -I../include/MicroPython/py -I./py -DSTM32F40_41xxx -DUSE_USB_OTG_FS -DARM_MATH_CM4 -D__FPU_PRESENT  -DOSC=12
 
 ###################################################
 
@@ -61,7 +60,8 @@ all:
 	$(MAKE) -C USB_Device
 	$(MAKE) -C USB_Generic
 	$(MAKE) -C Examples
-#	$(MAKE) -C fat_fs 
+	$(MAKE) -C FatFS
+	$(MAKE) -C CC3000
 
 clean:
 	$(MAKE) clean -C CMSIS
@@ -70,4 +70,5 @@ clean:
 	$(MAKE) clean -C USB_Device
 	$(MAKE) clean -C USB_Generic
 	$(MAKE) clean -C Examples
-#	$(MAKE) clean -C fat_fs
+	$(MAKE) clean -C FatFS
+	$(MAKE) clean -C CC3000
