@@ -34,7 +34,7 @@ endif
 #_CFLAGS += -msoft-float -D__SOFTFP__
 #endif
 
-_CFLAGS += -Wall $(OPT_FLAGS) -mlittle-endian -mthumb -nostartfiles -mcpu=cortex-m4 -mabi=aapcs-linux -fshort-enums
+_CFLAGS += -Wall $(OPT_FLAGS) -mlittle-endian -mthumb -nostartfiles -mcpu=cortex-m4 -mabi=aapcs-linux
 _CFLAGS += -fsingle-precision-constant -Wdouble-promotion -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_TYPE) -std=gnu99
 _CFLAGS += -DOSC=$(OSC) -DSTM32F40_41xxx
           -I../include/MicroPython/py -I./py -DSTM32F40_41xxx -DUSE_USB_OTG_FS -DARM_MATH_CM4 -D__FPU_PRESENT  -DOSC=12
@@ -56,12 +56,12 @@ export TOP_DIR
 all:
 	$(MAKE) -C CMSIS
 	$(MAKE) -C StdPeriph
-	$(MAKE) -C USB_OTG
-	$(MAKE) -C USB_Device
-	$(MAKE) -C USB_Generic
-	$(MAKE) -C Examples
-	$(MAKE) -C FatFS
-	$(MAKE) -C CC3000
+#	$(MAKE) -C USB_OTG
+#	$(MAKE) -C USB_Device
+#	$(MAKE) -C USB_Generic
+#	$(MAKE) -C Examples
+#	$(MAKE) -C FatFS
+#	$(MAKE) -C CC3000
 
 clean:
 	$(MAKE) clean -C CMSIS
