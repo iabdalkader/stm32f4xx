@@ -15,8 +15,8 @@ all:: $(BIN)
 
 $(BIN): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(LIB) -o $(BIN).elf
-	$(OBJCOPY) -Oihex -j .text -j .data $(BIN).elf $(BIN).hex
-	$(OBJCOPY) -Obinary  -j .text -j .data $(BIN).elf $(BIN).bin
+	$(OBJCOPY) -Oihex $(BIN).elf $(BIN).hex
+	$(OBJCOPY) -Obinary  $(BIN).elf $(BIN).bin
 	$(OBJDUMP) -d $(BIN).elf > $(BIN).dis
 
 stats: $(BIN).elf
